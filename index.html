@@ -1,3 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Corporate Email – Conditional Practice</title>
+
+<style>
+body {
+    font-family: Verdana, Arial, sans-serif;
+    font-size: 16px;
+    background: #e9eef3;
+    padding: 30px;
+}
+
+.mail {
+    max-width: 720px;
+    margin: auto;
+    background: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.header {
+    background: #1f3a5f;
+    color: white;
+    padding: 20px;
+}
+
+.header h2 {
+    margin: 0;
+}
+
+.meta {
+    font-size: 0.95rem;
+    margin-top: 5px;
+    color: #d6e0ea;
+}
+
+.content {
+    padding: 25px;
+    line-height: 1.7;
+}
+
+input {
+    font-family: Verdana, Arial, sans-serif;
+    font-size: 15px;
+    border: none;
+    border-bottom: 2px solid #888;
+    padding: 4px;
+    width: 150px;
+    margin: 0 4px;
+}
+
+input.correct {
+    border-bottom: 2px solid green;
+}
+
+input.incorrect {
+    border-bottom: 2px solid red;
+}
+
+.feedback {
+    font-size: 0.85rem;
+    margin-left: 6px;
+}
+
+.section {
+    margin-top: 18px;
+}
+
+button {
+    margin-top: 22px;
+    background: #1f3a5f;
+    color: white;
+    border: none;
+    padding: 11px 18px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.result {
+    margin-top: 16px;
+    font-weight: bold;
+}
+
+.footer {
+    background: #f2f5f8;
+    padding: 20px;
+    border-top: 1px solid #ddd;
+    font-size: 0.95rem;
+}
+</style>
+</head>
+
+<body>
+
+<div class="mail">
+
+<div class="header">
+    <h2>Internal Strategy Update</h2>
+    <div class="meta">From: Operations Director | To: Team Members</div>
+</div>
+
+<div class="content">
+
+<p><strong>Dear colleagues,</strong></p>
+
+<p>
+As you know, there was an item in the news this morning about a man reporting being injured by one of our blenders (model WB-110).
+If we <input id="q1"> (act)
+<span id="f1" class="feedback"></span>
+quickly, we'll avert a crisis.
+</p>
+
+<div class="section">
+<p>
+<strong>1)</strong> We're going to issue a recall.
+If we <input id="q2"> (do)
+<span id="f2" class="feedback"></span>
+this when we had a similar problem two years ago, there wouldn't have been a crisis.
+If we had acted more decisively then, the media coverage
+<input id="q3"> (be)
+<span id="f3" class="feedback"></span>
+far better.
+</p>
+</div>
+
+<div class="section">
+<p>
+<strong>2)</strong> If you follow the instructions, our products
+<input id="q4"> (be)
+<span id="f4" class="feedback"></span>
+completely safe.
+</p>
+</div>
+
+<div class="section">
+<p>
+<strong>3)</strong> If we didn't do this, he
+<input id="q5"> (take)
+<span id="f5" class="feedback"></span>
+legal action.
+</p>
+</div>
+
+<div class="section">
+<p>
+<strong>4)</strong> If we
+<input id="q6"> (ignore)
+<span id="f6" class="feedback"></span>
+the media, we'll never be able to control the flow of information.
+</p>
+</div>
+
+<div class="section">
+<p>
+<strong>5)</strong> If you have any questions, please
+<input id="q7"> (contact)
+<span id="f7" class="feedback"></span>
+my office.
+</p>
+</div>
+
+<button onclick="check()">Check answers</button>
+<p id="result" class="result"></p>
+
+</div>
+
+<div class="footer">
+<strong>Steven Biggs</strong><br>
+Operations Director<br>
+direct line: 0554-987-9983
+</div>
+
+</div>
+
 <script>
 function check() {
     const answers = {
@@ -16,10 +194,8 @@ function check() {
         const input = document.getElementById(key);
         const feedback = document.getElementById("f" + (index + 1));
         const correctAnswer = answers[key];
-
         const userAnswer = input.value.trim().toLowerCase();
 
-        // reset styles
         input.classList.remove("correct", "incorrect");
 
         if (userAnswer === correctAnswer) {
@@ -28,7 +204,7 @@ function check() {
             score++;
         } else {
             input.classList.add("incorrect");
-            feedback.innerHTML = `❌ correct answer: <strong>${correctAnswer}</strong>`;
+            feedback.innerHTML = "❌ correct answer: <em>" + correctAnswer + "</em>";
         }
     });
 
@@ -36,3 +212,6 @@ function check() {
         "Score: " + score + " / 7";
 }
 </script>
+
+</body>
+</html>
