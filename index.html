@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Corporate Email - Conditional Practice</title>
+<style>
+body {
+    font-family: 'Calibri', sans-serif;
+    background: #e9eef3;
+    padding: 30px;
+}
+.mail {
+    max-width: 720px;
+    margin: auto;
+    background: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+.header {
+    background: #1f3a5f;
+    color: white;
+    padding: 20px;
+}
+.header h2 {
+    margin: 0;
+}
+.meta {
+    font-size: 0.9rem;
+    margin-top: 5px;
+    color: #d6e0ea;
+}
+.content {
+    padding: 25px;
+    line-height: 1.7;
+    font-size: 0.95rem;
+}
+input {
+    border: none;
+    border-bottom: 2px solid #888;
+    padding: 3px;
+    width: 120px;
+    margin: 0 4px;
+}
+input:focus {
+    outline: none;
+    border-bottom: 2px solid #1f3a5f;
+}
+.section {
+    margin-top: 15px;
+}
+.footer {
+    background: #f2f5f8;
+    padding: 20px;
+    border-top: 1px solid #ddd;
+}
+.logo {
+    width: 100px;
+    margin-top: 10px;
+}
+button {
+    margin-top: 20px;
+    background: #1f3a5f;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+.result {
+    margin-top: 15px;
+    font-weight: bold;
+}
+</style>
+</head>
+<body>
+
+<div class="mail">
+
+<div class="header">
+<h2>Internal Strategy Update</h2>
+<div class="meta">From: Operations Director | To: Team Members</div>
+</div>
+
+<div class="content">
+
+<p><strong>Dear team,</strong></p>
+
+<p>As you are aware, a recent situation has raised concerns about one of our product lines. While the issue has been contained, its visibility could impact our brand image. 
+If we <input id="q1"> (act) promptly, we can still prevent long-term damage.</p>
+
+<div class="section">
+<p><strong>1)</strong> If we <input id="q2"> (address) this earlier, the situation would not have escalated. 
+If we had responded more strategically, public perception <input id="q3"> (be) more positive.</p>
+</div>
+
+<div class="section">
+<p><strong>2)</strong> Moving forward, we must reinforce the message that if customers follow instructions, our products <input id="q4"> (be) safe to use.</p>
+</div>
+
+<div class="section">
+<p><strong>3)</strong> We are considering a private resolution. If we did not take this step, the situation <input id="q5"> (lead) to further complications.</p>
+</div>
+
+<div class="section">
+<p><strong>4)</strong> We will communicate proactively. If we <input id="q6"> (ignore) external attention, we risk losing control of the narrative.</p>
+</div>
+
+<div class="section">
+<p><strong>5)</strong> Please ensure all team members are aligned with the communication plan. If you need clarification, do not hesitate to <input id="q7"> (contact) us directly.</p>
+</div>
+
+<p>Our response today will define our stability tomorrow.</p>
+
+<button onclick="check()">Check answers</button>
+<p id="result" class="result"></p>
+
+</div>
+
+<div class="footer">
+<strong>Jordan Lewis</strong><br>
+Operations Director
+<br>
+<img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/4/4f/Iconic_image_placeholder.png">
+</div>
+
+</div>
+
+<script>
+function check(){
+    let answers = {
+        q1:"act",
+        q2:"had addressed",
+        q3:"would have been",
+        q4:"will be",
+        q5:"would lead",
+        q6:"ignore",
+        q7:"contact"
+    };
+
+    let score = 0;
+    for(let key in answers){
+        let val = document.getElementById(key).value.toLowerCase().trim();
+        if(val === answers[key]) score++;
+    }
+
+    document.getElementById("result").innerHTML = "Score: "+score+" / 7";
+}
+</script>
+
+</body>
+</html>
